@@ -25,68 +25,72 @@ class SlidingCard extends StatelessWidget {
     double gauss = math.exp(-(math.pow((offset.abs() - 0.5), 2) / 0.08));
 
     return Transform.translate(
-      offset: Offset(-32 * gauss * offset.sign, 0),
-      child: Card(
+        offset: Offset(-32 * gauss * offset.sign, 0),
+        child: Card(
           margin: EdgeInsets.only(right: 16, bottom: 24),
-          elevation: 8,
+          elevation: 20,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
-          child: 
-             Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Hero(
-            tag: name,
-                child:ClipRRect(
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
-                  child: Image.asset(
-                    'assets/$assetName',
-                    alignment: Alignment(-offset.abs(), 0),
-                    height: MediaQuery.of(context).size.height * 0.4,
-                    //alignment: Alignment(-offset.abs(), 0),
-                    fit: BoxFit.cover,
-                  ),
-                )),
-                SizedBox(height: 8),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20,vertical: 6),
-                  child: Column(
-                  children: [
-                    Text(name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
-                    SizedBox(height: 20,),
-                    Row(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              MaterialButton(
-                color: Color(0xFF162A49),
-                child: Text('Discover'),
-                textColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(32),
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ChildPage(
-                      name_image: assetName,
-                      name: name,
+              Hero(
+                  tag: name,
+                  child: ClipRRect(
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(32)),
+                    child: Image.asset(
+                      'assets/$assetName',
+                      alignment: Alignment(-offset.abs(), 0),
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      //alignment: Alignment(-offset.abs(), 0),
+                      fit: BoxFit.cover,
                     ),
-                  ));
-                },
-              ),
-              Spacer(),
-              Icon(
-                Icons.place_rounded,
-                color: Color(0xFF162A49),
-              ),
-              
+                  )),
+              SizedBox(height: 8),
+              Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+                  child: Column(
+                    children: [
+                      Text(
+                        name,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          MaterialButton(
+                            color: Color(0xFF162A49),
+                            child: Text('Discover'),
+                            textColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(32),
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => ChildPage(
+                                  name_image: assetName,
+                                  name: name,
+                                ),
+                              ));
+                            },
+                          ),
+                          Spacer(),
+                          Icon(
+                            Icons.place_rounded,
+                            color: Color(0xFF162A49),
+                          ),
+                        ],
+                      )
+                    ],
+                  ))
             ],
-          )
-                  ],
-                ))
-              ],
-            ),
-          )
-    );
+          ),
+        ));
   }
 }
 

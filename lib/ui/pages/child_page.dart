@@ -15,10 +15,8 @@ class _ChildPageState extends State<ChildPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: Stack(
         children: [
-          
           SingleChildScrollView(
             child: Column(
               children: [
@@ -31,11 +29,10 @@ class _ChildPageState extends State<ChildPage> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        icon: Icon(Icons.chevron_left)),
-                    Text(
-                      widget.name,
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
+                        icon: Icon(
+                          Icons.chevron_left,
+                          size: 30,
+                        )),
                   ],
                 ),
                 Container(
@@ -51,7 +48,7 @@ class _ChildPageState extends State<ChildPage> {
                       ),
                     ],
                   ),
-                  margin: EdgeInsets.all(20),
+                  margin: EdgeInsets.symmetric(horizontal: 20),
                   child: Hero(
                     tag: widget.name,
                     child: ClipRRect(
@@ -65,23 +62,52 @@ class _ChildPageState extends State<ChildPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text(
+                        widget.name,
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Row(
                         children: [
-                          Icon(Icons.timer_outlined, color: Color(0xFF162A49),),
-                          SizedBox(width: 6,),
-                          Text('2-3 hours', style: TextStyle(color: Colors.blueGrey, fontSize: 18),),
+                          Icon(
+                            Icons.timer_outlined,
+                            color: Color(0xFF162A49),
+                          ),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          Text(
+                            '2-3 hours',
+                            style:
+                                TextStyle(color: Colors.blueGrey, fontSize: 18),
+                          ),
                         ],
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Row(
                         children: [
-                          Icon(Icons.travel_explore, color: Color(0xFF162A49),),
-                          SizedBox(width: 6,),
-                          Text('A wonderfull trip', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                          Icon(
+                            Icons.travel_explore,
+                            color: Color(0xFF162A49),
+                          ),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          Text(
+                            'A wonderfull trip',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18),
+                          ),
                         ],
                       ),
-                      
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Text(
                         bigDescription,
                         style: TextStyle(color: Colors.black, fontSize: 16),
@@ -89,18 +115,52 @@ class _ChildPageState extends State<ChildPage> {
                     ],
                   ),
                 ),
-                SizedBox(height: 120,)
+                SizedBox(
+                  height: 120,
+                )
               ],
             ),
           ),
           Positioned(
-            bottom: 0,
-            child: Container(
-              height: 100,
-              width: MediaQuery.of(context).size.width,
-              color: Color(0xFF162A49),
-            ),
-          ),
+              bottom: 0,
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.center,
+                    end: Alignment.center,
+                    stops: [
+                      0.6,
+                      0.5,
+                      0.7,
+                      0.6,
+                    ],
+                    colors: [
+                      Color.fromARGB(190, 255, 255, 255),
+                      Colors.white,
+                      Colors.white,
+                      Color.fromARGB(190, 255, 255, 255)
+                    ],
+                  ),
+                ),
+                width: MediaQuery.of(context).size.width,
+                height: 120,
+                child: Center(
+                    child: Container(
+                        margin: EdgeInsets.all(20),
+                        width: MediaQuery.of(context).size.width,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            color: Color(0xFF162A49),
+                            borderRadius: BorderRadius.circular(40)),
+                        child: Center(
+                            child: Text(
+                          'Buy this travel',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18),
+                        )))),
+              )),
         ],
       ),
     );
